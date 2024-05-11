@@ -6,10 +6,10 @@ import net.minecraft.util.dynamic.CodecHolder;
 import net.minecraft.world.gen.densityfunction.DensityFunction;
 import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
 
-public record Signum(DensityFunction df) implements DensityFunctionTypes.Unary {
+public record Signum(DensityFunction df) implements DensityFunctionTypes.class_6932 {
 
     private static final MapCodec<Signum> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(DensityFunction.FUNCTION_CODEC.fieldOf("input").forGetter(Signum::df)).apply(instance, (Signum::new)));
-    public static final CodecHolder<Signum> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+    public static final CodecHolder<Signum> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
     @Override
     public DensityFunction input() {
@@ -22,7 +22,7 @@ public record Signum(DensityFunction df) implements DensityFunctionTypes.Unary {
     }
 
     @Override
-    public DensityFunction apply(DensityFunctionVisitor visitor) {
+    public DensityFunction apply(DensityFunction.DensityFunctionVisitor visitor) {
         return new Signum(this.df.apply(visitor));
     }
 
@@ -37,7 +37,7 @@ public record Signum(DensityFunction df) implements DensityFunctionTypes.Unary {
     }
 
     @Override
-    public CodecHolder<? extends DensityFunction> getCodecHolder() {
+    public CodecHolder<? extends DensityFunction> getCodec() {
         return CODEC;
     }
 }
