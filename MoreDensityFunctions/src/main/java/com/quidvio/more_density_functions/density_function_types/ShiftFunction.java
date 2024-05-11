@@ -9,7 +9,7 @@ import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
 
 public record ShiftFunction(DensityFunction df, DensityFunction shiftx, DensityFunction shifty, DensityFunction shiftz) implements DensityFunction {
 
-    private static final MapCodec<ShiftFunction> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(DensityFunction.CODEC.fieldOf("input").forGetter(ShiftFunction::df), DensityFunction.CODEC.fieldOf("shift_x").forGetter(ShiftFunction::shiftx), DensityFunction.CODEC.fieldOf("shift_y").forGetter(ShiftFunction::shifty), DensityFunction.CODEC.fieldOf("shift_z").forGetter(ShiftFunction::shiftz)).apply(instance, (ShiftFunction::new)));
+    private static final MapCodec<ShiftFunction> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(DensityFunction.FUNCTION_CODEC.fieldOf("input").forGetter(ShiftFunction::df), DensityFunction.FUNCTION_CODEC.fieldOf("shift_x").forGetter(ShiftFunction::shiftx), DensityFunction.FUNCTION_CODEC.fieldOf("shift_y").forGetter(ShiftFunction::shifty), DensityFunction.FUNCTION_CODEC.fieldOf("shift_z").forGetter(ShiftFunction::shiftz)).apply(instance, (ShiftFunction::new)));
     public static final CodecHolder<ShiftFunction> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
 
