@@ -2,8 +2,8 @@ package com.quidvio.more_density_functions;
 
 import com.quidvio.more_density_functions.density_function_types.*;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.Identifier;
 
 public class MoreDensityFunctionsMain implements ModInitializer {
 
@@ -21,8 +21,11 @@ public class MoreDensityFunctionsMain implements ModInitializer {
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","floor"), Floor.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","ceil"), Ceil.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","round"), Round.CODEC.codec());
+        Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","signum"), Signum.CODEC.codec());
+        Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","div"), Division.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","floor_div"), FloorDivision.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","mod"), Modulo.CODEC.codec());
+        Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","floor_mod"), FloorModulo.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","reciprocal"), Reciprocal.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","shift_df"), ShiftFunction.CODEC.codec());
         Registry.register(Registry.DENSITY_FUNCTION_TYPE, new Identifier("more_dfs","negate"), Negation.CODEC.codec());
