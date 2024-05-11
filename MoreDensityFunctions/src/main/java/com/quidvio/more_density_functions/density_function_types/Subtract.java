@@ -24,7 +24,7 @@ public record Subtract(DensityFunction arg1, DensityFunction arg2) implements De
 
     @Override
     public DensityFunction apply(DensityFunctionVisitor visitor) {
-        return visitor.apply(new Subtract(this.arg1,this.arg2));
+        return visitor.apply(new Subtract(this.arg1.apply(visitor), this.arg2.apply(visitor)));
     }
 
     @Override
@@ -39,12 +39,12 @@ public record Subtract(DensityFunction arg1, DensityFunction arg2) implements De
 
     @Override
     public double minValue() {
-        return Math.min(arg1.minValue(),arg2.minValue());
+        return Math.min(arg1.minValue(), arg2.minValue());
     }
 
     @Override
     public double maxValue() {
-        return Math.max(arg1.maxValue(),arg2.maxValue());
+        return Math.max(arg1.maxValue(), arg2.maxValue());
     }
 
     @Override

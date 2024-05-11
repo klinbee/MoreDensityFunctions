@@ -14,7 +14,7 @@ public record Power(DensityFunction base, DensityFunction exponent) implements D
 
     @Override
     public double sample(NoisePos pos) {
-        return Math.pow(this.base.sample(pos),this.exponent.sample(pos));
+        return Math.pow(this.base.sample(pos), this.exponent.sample(pos));
     }
 
     @Override
@@ -24,7 +24,7 @@ public record Power(DensityFunction base, DensityFunction exponent) implements D
 
     @Override
     public DensityFunction apply(DensityFunctionVisitor visitor) {
-        return visitor.apply(new Power(this.base,this.exponent));
+        return visitor.apply(new Power(this.base.apply(visitor), this.exponent.apply(visitor)));
     }
 
     @Override
@@ -39,12 +39,12 @@ public record Power(DensityFunction base, DensityFunction exponent) implements D
 
     @Override
     public double minValue() {
-        return Math.min(base.minValue(),exponent.minValue());
+        return Math.min(base.minValue(), exponent.minValue());
     }
 
     @Override
     public double maxValue() {
-        return Math.max(base.maxValue(),exponent.maxValue());
+        return Math.max(base.maxValue(), exponent.maxValue());
     }
 
     @Override
