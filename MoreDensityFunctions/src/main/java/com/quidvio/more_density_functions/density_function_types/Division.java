@@ -10,7 +10,7 @@ import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
 public record Division(DensityFunction dividend, DensityFunction divisor, double maxOutput, double minOutput, double errorVal) implements DensityFunction {
 
     private static final MapCodec<Division> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(DensityFunction.FUNCTION_CODEC.fieldOf("dividend").forGetter(Division::dividend), DensityFunction.FUNCTION_CODEC.fieldOf("divisor").forGetter(Division::divisor), Codec.doubleRange(-Double.MAX_VALUE, Double.MAX_VALUE).fieldOf("max_output").forGetter(Division::maxOutput), Codec.doubleRange(-Double.MAX_VALUE, Double.MAX_VALUE).fieldOf("min_output").forGetter(Division::minOutput), Codec.doubleRange(-Double.MAX_VALUE, Double.MAX_VALUE).fieldOf("error_value").forGetter(Division::errorVal)).apply(instance, (Division::new)));
-    public static final CodecHolder<Division> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+    public static final CodecHolder<Division> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
 
     @Override
@@ -36,8 +36,8 @@ public record Division(DensityFunction dividend, DensityFunction divisor, double
     }
 
     @Override
-    public void fill(double[] densities, EachApplier applier) {
-        applier.fill(densities,this);
+    public void method_40470(double[] densities, class_6911 applier) {
+        applier.method_40478(densities,this);
     }
 
     @Override
@@ -71,7 +71,7 @@ public record Division(DensityFunction dividend, DensityFunction divisor, double
     }
 
     @Override
-    public CodecHolder<? extends DensityFunction> getCodecHolder() {
+    public CodecHolder<? extends DensityFunction> getCodec() {
         return CODEC;
     }
 }
