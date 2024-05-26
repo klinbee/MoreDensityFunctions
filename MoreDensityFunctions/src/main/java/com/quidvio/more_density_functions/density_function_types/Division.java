@@ -4,16 +4,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.quidvio.more_density_functions.MoreDensityFunctionsMain;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.util.dynamic.CodecHolder;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.densityfunction.DensityFunction;
 import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
-import net.minecraft.world.gen.heightprovider.HeightProvider;
-import net.minecraft.world.gen.structure.Structure;
 
-import java.util.List;
 import java.util.Optional;
 
 public record Division(DensityFunction dividend, DensityFunction divisor, Optional<Double> maxOutput,
@@ -26,7 +20,7 @@ public record Division(DensityFunction dividend, DensityFunction divisor, Option
           Codec.DOUBLE.optionalFieldOf("min_output").forGetter(Division::minOutput),
           DensityFunction.FUNCTION_CODEC.optionalFieldOf("error_output").forGetter(Division::errorDf))
       .apply(instance, (Division::new)));
-  public static final CodecHolder<Division> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Division> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public double sample(NoisePos pos) {
@@ -69,11 +63,6 @@ public record Division(DensityFunction dividend, DensityFunction divisor, Option
   }
 
   @Override
-  public Optional<DensityFunction> errorDf() {
-    return this.errorDf;
-  }
-
-  @Override
   public double minValue() {
     if (errorDf.isPresent()) {
       return Math.min(this.errorDf.get().minValue(),
@@ -94,18 +83,8 @@ public record Division(DensityFunction dividend, DensityFunction divisor, Option
   }
 
   @Override
-  public DensityFunction errorDf() {
+  public Optional<DensityFunction> errorDf() {
     return this.errorDf;
-  }
-
-  @Override
-  public double minValue() {
-    return Math.min(this.errorDf.minValue(), this.minOutput);
-  }
-
-  @Override
-  public double maxValue() {
-    return Math.max(this.errorDf.maxValue(), this.maxOutput);
   }
 
   @Override

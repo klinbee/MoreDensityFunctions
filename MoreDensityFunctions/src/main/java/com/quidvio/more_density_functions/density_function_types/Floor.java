@@ -10,7 +10,7 @@ public record Floor(DensityFunction df) implements DensityFunctionTypes.class_69
 
   private static final MapCodec<Floor> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Floor::df)).apply(instance, (Floor::new)));
-  public static final CodecHolder<Floor> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Floor> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

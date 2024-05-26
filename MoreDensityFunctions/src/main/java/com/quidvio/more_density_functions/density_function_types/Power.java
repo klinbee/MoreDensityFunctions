@@ -20,7 +20,7 @@ public record Power(DensityFunction base, DensityFunction exponent, Optional<Dou
           Codec.DOUBLE.optionalFieldOf("max_output").forGetter(Power::maxOutput),
           DensityFunction.FUNCTION_CODEC.optionalFieldOf("error_output").forGetter(Power::errorDf))
       .apply(instance, (Power::new)));
-  public static final CodecHolder<Power> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Power> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public double sample(NoisePos pos) {
@@ -48,8 +48,8 @@ public record Power(DensityFunction base, DensityFunction exponent, Optional<Dou
   }
 
   @Override
-  public void fill(double[] densities, EachApplier applier) {
-    applier.fill(densities, this);
+  public void method_40470(double[] densities, class_6911 applier) {
+    applier.method_40478(densities, this);
   }
 
   @Override
@@ -98,7 +98,7 @@ public record Power(DensityFunction base, DensityFunction exponent, Optional<Dou
   }
 
   @Override
-  public CodecHolder<? extends DensityFunction> getCodecHolder() {
+  public CodecHolder<? extends DensityFunction> getCodec() {
     return CODEC;
   }
 }

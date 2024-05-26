@@ -10,7 +10,7 @@ public record Round(DensityFunction df) implements DensityFunctionTypes.class_69
 
   private static final MapCodec<Round> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Round::df)).apply(instance, (Round::new)));
-  public static final CodecHolder<Round> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Round> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

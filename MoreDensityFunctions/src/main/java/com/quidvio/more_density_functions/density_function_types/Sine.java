@@ -10,7 +10,7 @@ public record Sine(DensityFunction df) implements DensityFunctionTypes.class_693
 
   private static final MapCodec<Sine> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Sine::df)).apply(instance, (Sine::new)));
-  public static final CodecHolder<Sine> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Sine> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

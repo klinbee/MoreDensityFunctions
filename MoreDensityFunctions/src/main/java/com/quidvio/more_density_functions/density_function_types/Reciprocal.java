@@ -19,7 +19,7 @@ public record Reciprocal(DensityFunction df, Optional<Double> maxOutput, Optiona
           Codec.DOUBLE.optionalFieldOf("min_output").forGetter(Reciprocal::minOutput),
           DensityFunction.FUNCTION_CODEC.optionalFieldOf("error_output").forGetter(Reciprocal::errorDf))
       .apply(instance, (Reciprocal::new)));
-  public static final CodecHolder<Reciprocal> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Reciprocal> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public double sample(NoisePos pos) {
@@ -46,8 +46,8 @@ public record Reciprocal(DensityFunction df, Optional<Double> maxOutput, Optiona
   }
 
   @Override
-  public void fill(double[] densities, EachApplier applier) {
-    applier.fill(densities, this);
+  public void method_40470(double[] densities, class_6911 applier) {
+    applier.method_40478(densities, this);
   }
 
   @Override
@@ -90,7 +90,7 @@ public record Reciprocal(DensityFunction df, Optional<Double> maxOutput, Optiona
   }
 
   @Override
-  public CodecHolder<? extends DensityFunction> getCodecHolder() {
+  public CodecHolder<? extends DensityFunction> getCodec() {
     return CODEC;
   }
 }

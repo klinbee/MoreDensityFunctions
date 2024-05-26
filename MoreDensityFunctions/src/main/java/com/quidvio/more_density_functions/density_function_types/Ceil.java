@@ -10,7 +10,7 @@ public record Ceil(DensityFunction df) implements DensityFunctionTypes.class_693
 
   private static final MapCodec<Ceil> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Ceil::df)).apply(instance, (Ceil::new)));
-  public static final CodecHolder<Ceil> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Ceil> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

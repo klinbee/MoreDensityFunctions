@@ -10,7 +10,7 @@ public record Sqrt(DensityFunction df) implements DensityFunctionTypes.class_693
 
   private static final MapCodec<Sqrt> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Sqrt::df)).apply(instance, (Sqrt::new)));
-  public static final CodecHolder<Sqrt> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Sqrt> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

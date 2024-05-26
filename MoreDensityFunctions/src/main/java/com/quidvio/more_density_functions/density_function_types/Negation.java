@@ -11,7 +11,7 @@ public record Negation(DensityFunction df) implements DensityFunctionTypes.class
   private static final MapCodec<Negation> MAP_CODEC = RecordCodecBuilder
       .mapCodec((instance) -> instance.group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Negation::df))
           .apply(instance, (Negation::new)));
-  public static final CodecHolder<Negation> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Negation> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {

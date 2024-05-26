@@ -10,7 +10,7 @@ public record Signum(DensityFunction df) implements DensityFunctionTypes.class_6
 
   private static final MapCodec<Signum> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Signum::df)).apply(instance, (Signum::new)));
-  public static final CodecHolder<Signum> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
+  public static final CodecHolder<Signum> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
 
   @Override
   public DensityFunction input() {
