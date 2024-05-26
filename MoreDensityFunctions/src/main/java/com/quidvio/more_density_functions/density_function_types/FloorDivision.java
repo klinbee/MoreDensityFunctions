@@ -21,10 +21,8 @@ public record FloorDivision(DensityFunction dividend, DensityFunction divisor, O
   private static final MapCodec<FloorDivision> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
       .group(DensityFunction.FUNCTION_CODEC.fieldOf("dividend").forGetter(FloorDivision::dividend),
           DensityFunction.FUNCTION_CODEC.fieldOf("divisor").forGetter(FloorDivision::divisor),
-          Codec.doubleRange(-Double.MAX_VALUE, Double.MAX_VALUE).optionalFieldOf("max_output")
-              .forGetter(FloorDivision::maxOutput),
-          Codec.doubleRange(-Double.MAX_VALUE, Double.MAX_VALUE).optionalFieldOf("min_output")
-              .forGetter(FloorDivision::minOutput),
+          Codec.DOUBLE.optionalFieldOf("max_output").forGetter(FloorDivision::maxOutput),
+          Codec.DOUBLE.optionalFieldOf("min_output").forGetter(FloorDivision::minOutput),
           DensityFunction.FUNCTION_CODEC.optionalFieldOf("error_output").forGetter(FloorDivision::errorDf))
       .apply(instance, (FloorDivision::new)));
   public static final CodecHolder<FloorDivision> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
