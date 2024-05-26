@@ -8,39 +8,40 @@ import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
 
 public record Sqrt(DensityFunction df) implements DensityFunctionTypes.class_6932 {
 
-    private static final MapCodec<Sqrt> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(DensityFunction.FUNCTION_CODEC.fieldOf("input").forGetter(Sqrt::df)).apply(instance, (Sqrt::new)));
-    public static final CodecHolder<Sqrt> CODEC = DensityFunctionTypes.method_41065(MAP_CODEC);
+  private static final MapCodec<Sqrt> MAP_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance
+      .group(DensityFunction.FUNCTION_CODEC.fieldOf("argument").forGetter(Sqrt::df)).apply(instance, (Sqrt::new)));
+  public static final CodecHolder<Sqrt> CODEC = DensityFunctionTypes.holderOf(MAP_CODEC);
 
-    @Override
-    public DensityFunction input() {
-        return this.df;
-    }
+  @Override
+  public DensityFunction input() {
+    return this.df;
+  }
 
-    @Override
-    public double apply(double density) {
-        if (density <= 0) {
-            return 0;
-        }
-        return Math.sqrt(density);
+  @Override
+  public double apply(double density) {
+    if (density <= 0) {
+      return 0;
     }
+    return Math.sqrt(density);
+  }
 
-    @Override
-    public DensityFunction apply(DensityFunctionVisitor visitor) {
-        return new Sqrt(this.df.apply(visitor));
-    }
+  @Override
+  public DensityFunction apply(DensityFunctionVisitor visitor) {
+    return new Sqrt(this.df.apply(visitor));
+  }
 
-    @Override
-    public double minValue() {
-        return Math.min(0,Math.sqrt(this.df.minValue()));
-    }
+  @Override
+  public double minValue() {
+    return Math.min(0, Math.sqrt(this.df.minValue()));
+  }
 
-    @Override
-    public double maxValue() {
-        return Math.max(0,Math.sqrt(this.df.maxValue()));
-    }
+  @Override
+  public double maxValue() {
+    return Math.max(0, Math.sqrt(this.df.maxValue()));
+  }
 
-    @Override
-    public CodecHolder<? extends DensityFunction> getCodec() {
-        return CODEC;
-    }
+  @Override
+  public CodecHolder<? extends DensityFunction> getCodec() {
+    return CODEC;
+  }
 }
